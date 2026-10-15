@@ -3,6 +3,8 @@ package com.springboot.helpdesk.utility;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -14,7 +16,8 @@ import java.util.function.Function;
 @Component
 public class JwtUtility {
 
-    private String SECRET_KEY = "aksfde839238f8dfse39kdhglskf";
+    @Value("${jwt.secret}")
+    private String SECRET_KEY;
 
     public String generateToken(String username) { //We use this
         Map<String, Object> claims = new HashMap<>();
